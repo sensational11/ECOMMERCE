@@ -24,16 +24,23 @@ Product.init({
   price: {
     type: DataTypes.DECIMAL, //sets datatype to decimal
     allowNull: false, //Does not allow null values
-    validate: DECIMAL, //validates that the value is a decimal double check this
+    validate: {
+      //validates that the value is a decimal double check this
+      isDecimal: true,
+    },
   },
   stock: {
     type: DataTypes.INTEGER, //sets datatype to integer
     allowNull: false, //Does not allow null values
     defaultValue: 10, //set a default value of '10'
-    validate: Number, //validates that the value is numeric.
+    validate: {
+      //validates that the value is numeric.
+      isNumeric: true,
+    },
   },
   category_id: {
     type: DataTypes.INTEGER, //sets datatype to integer
+
     references: {
       //References the 'Category' model's 'id'.
       model: "Category",
