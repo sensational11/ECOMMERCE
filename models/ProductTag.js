@@ -15,10 +15,18 @@ ProductTag.init({
   product_id: {
     type: DataTypes.INTEGER, //sets datatype as an integer 
     //references the 'Product' model's 'id'
+    references: {
+      model: "product",
+    keys: "id",
+    }
   },
   tag_id : {
     type: DataTypes.INTEGER, //sets datatype as an integer 
     //References the tag model's id 
+    references: {
+      model: "reader",
+      key: "id",
+    }
   },
 
   sequelize,
