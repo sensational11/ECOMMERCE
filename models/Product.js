@@ -17,7 +17,7 @@ Product.init({
     autoIncrement: true, //Utilizes auto increment
   },
   product_name: {
-    type: DataTypes.STRING, //sets datatype to integer
+    type: DataTypes.STRING, //sets datatype to string
     allowNull: false, //Does allow null values
   },
 
