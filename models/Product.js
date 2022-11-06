@@ -8,51 +8,55 @@ const Category = require("./Category");
 class Product extends Model {}
 
 // set up fields and rules for Product model
-Product.init({
-  // define columns
-  id: {
-    type: DataTypes.INTEGER, //sets datatype to integer
-    allowNull: false, //Does not allow null values
-    primaryKey: true, //Sets primary key
-    autoIncrement: true, //Utilizes auto increment
-  },
-  product_name: {
-    type: DataTypes.STRING, //sets datatype to string
-    allowNull: false, //Does allow null values
-  },
+Product.init(
+  {
+    // define columns
+    id: {
+      type: DataTypes.INTEGER, //sets datatype to integer
+      allowNull: false, //Does not allow null values
+      primaryKey: true, //Sets primary key
+      autoIncrement: true, //Utilizes auto increment
+    },
+    product_name: {
+      type: DataTypes.STRING, //sets datatype to string
+      allowNull: false, //Does allow null values
+    },
 
-  price: {
-    type: DataTypes.DECIMAL, //sets datatype to decimal
-    allowNull: false, //Does not allow null values
-    validate: {
-      //validates that the value is a decimal double check this
-      isDecimal: true,
+    price: {
+      type: DataTypes.DECIMAL, //sets datatype to decimal
+      allowNull: false, //Does not allow null values
+      validate: {
+        //validates that the value is a decimal double check this
+        isDecimal: true,
+      },
+    },
+    stock: {
+      type: DataTypes.INTEGER, //sets datatype to integer
+      allowNull: false, //Does not allow null values
+      defaultValue: 10, //set a default value of '10'
+      validate: {
+        //validates that the value is numeric.
+        isNumeric: true,
+      },
+    },
+    category_id: {
+      type: DataTypes.INTEGER, //sets datatype to integer
+
+      references: {
+        //References the 'Category' model's 'id'.
+        model: "Category",
+        key: "id",
+      },
     },
   },
-  stock: {
-    type: DataTypes.INTEGER, //sets datatype to integer
-    allowNull: false, //Does not allow null values
-    defaultValue: 10, //set a default value of '10'
-    validate: {
-      //validates that the value is numeric.
-      isNumeric: true,
-    },
-  },
-  category_id: {
-    type: DataTypes.INTEGER, //sets datatype to integer
 
-    references: {
-      //References the 'Category' model's 'id'.
-      model: "Category",
-      key: "id",
-    },
-  },
-
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: "product",
-});
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "product",
+  }
+);
 
 module.exports = Product;
