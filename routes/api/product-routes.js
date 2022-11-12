@@ -13,12 +13,12 @@ router.get("/", (req, res) => {
         model: Category,
         attributes: ["category_name"],
         model: Tag,
-        as: "product_tags",
+        as: "product_tag",
         attributes: ["tag_name"],
       },
     ],
   })
-    .then((productData) => res.json(productData))
+    .then(productData => res.json(productData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -38,7 +38,7 @@ router.get("/:id", (req, res) => {
         model: Category,
         attributes: ["category_name"],
         model: Tag,
-        as: "product_tags",
+        as: "product_tag",
         attributes: ["tag_name"],
       },
     ],
