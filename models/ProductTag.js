@@ -26,7 +26,7 @@ ProductTag.init(
 
       references: {
         //References the tag model's id
-        model: "reader",
+        model: "tag",
         key: "id",
       },
     },
